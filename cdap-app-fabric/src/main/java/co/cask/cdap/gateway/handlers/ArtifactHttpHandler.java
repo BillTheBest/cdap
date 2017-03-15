@@ -80,6 +80,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.List;
@@ -468,7 +469,7 @@ public class ArtifactHttpHandler extends AbstractHttpHandler {
       LOG.error("Exception while invoking plugin method.", e);
       responder.sendString(HttpResponseStatus.BAD_REQUEST,
                            "Unable to deserialize request body to method parameter type");
-    } catch (Exception e) {
+    } catch (InvocationTargetException e) {
       LOG.error("Exception while invoking plugin method.", e);
       if (e.getCause() instanceof javax.ws.rs.NotFoundException) {
         throw new NotFoundException(e.getCause());
