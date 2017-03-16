@@ -307,6 +307,7 @@ export default class RecordSchemaRow extends Component {
                       <div className="btn btn-link">
                         <input
                           type="checkbox"
+                          addon={true}
                           checked={row.nullable}
                           onChange={this.onNullableChange.bind(this, index)}
                         />
