@@ -166,7 +166,6 @@ export default class ArraySchemaRow extends Component {
             <div className="btn btn-link">
               <input
                 type="checkbox"
-                addon={true}
                 checked={this.state.displayType.nullable}
                 onChange={this.onNullableChange.bind(this)}
               />
