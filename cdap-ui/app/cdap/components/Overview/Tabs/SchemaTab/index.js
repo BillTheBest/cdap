@@ -21,7 +21,6 @@ import SchemaEditor from 'components/SchemaEditor';
 import {getParsedSchema} from 'components/SchemaEditor/SchemaHelpers';
 import {Tooltip} from 'reactstrap';
 import T from 'i18n-react';
-
 require('./SchemaTab.scss');
 
 export default class SchemaTab extends Component {
@@ -37,9 +36,14 @@ export default class SchemaTab extends Component {
 
   componentWillMount() {
     if (!this.props.entity.schema) { return; }
-
-    let fields = getParsedSchema(this.props.entity.schema);
-    this.setSchema({fields});
+    let schema;
+    try {
+      schema = JSON.parse(this.props.entity.schema);
+    } catch (e) {
+      console.error('Error parsing schema: ', e);
+      schema = { fields: []};
+    }
+    this.setSchema({fields: schema.fields});
   }
 
   componentWillReceiveProps(nextProps) {

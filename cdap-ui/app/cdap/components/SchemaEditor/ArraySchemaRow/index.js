@@ -39,7 +39,7 @@ export default class ArraySchemaRow extends Component {
         showAbstractSchemaRow: true,
         error: ''
       };
-      this.parsedType = itemsType;
+      this.parsedType = parsedItemsType.type;
     } else {
       this.state = {
         displayType: {
